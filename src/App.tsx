@@ -7,6 +7,9 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import TabNavigator from './navigation/TabNavigator'
+
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -24,15 +27,13 @@ function App() {
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
+  const safeAreaInsets = useSafeAreaInsets()
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
