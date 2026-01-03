@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 const DashboardScreen = () => {
+  const navigation = useNavigation();
+
   return (
-    <SafeAreaView edges={['top']} className='flex-1 bg-gray-100'>
+    <SafeAreaView edges={['top']} className="flex-1 bg-gray-100">
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentInsetAdjustmentBehavior="never"
@@ -94,6 +97,35 @@ const DashboardScreen = () => {
             Explore Tools
           </Text>
         </Pressable>
+
+        {/* Assessment CTA Card */}
+        <View className="bg-primary rounded-2xl p-5 mx-5 mt-5">
+          <View className="flex-row justify-between items-start">
+            <View className="bg-white/20 px-3 py-1 rounded-xl">
+              <Text className="text-white text-xs">☰ 5-Step Flow</Text>
+            </View>
+            <View className="w-10 h-10 rounded-xl bg-white/20 items-center justify-center">
+              <Text className="text-white">📋</Text>
+            </View>
+          </View>
+
+          <Text className="text-white text-xl font-bold mt-4">
+            Get Your Personalized Plan
+          </Text>
+
+          <Text className="text-white/80 text-sm mt-2">
+            Take a few minutes to complete the assessment and receive a tailored
+            retirement strategy.
+          </Text>
+
+          <Pressable
+            className="bg-white rounded-xl py-3 mt-4 flex-row justify-center items-center"
+            onPress={() => navigation.navigate('Assessment' as never)}
+          >
+            <Text className="text-primary font-semibold">Start Assessment</Text>
+            <Text className="text-primary ml-2">→</Text>
+          </Pressable>
+        </View>
 
         {/* Saved Plans Header */}
         <View className="flex-row justify-between items-center mx-5 mt-6">
